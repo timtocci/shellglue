@@ -1,0 +1,24 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShellGlue", "ShellGlue.csproj", "{24ABFDE3-979B-4DAA-A7DB-508038837C0A}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{24ABFDE3-979B-4DAA-A7DB-508038837C0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24ABFDE3-979B-4DAA-A7DB-508038837C0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24ABFDE3-979B-4DAA-A7DB-508038837C0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24ABFDE3-979B-4DAA-A7DB-508038837C0A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
