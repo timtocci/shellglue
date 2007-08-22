@@ -1,0 +1,84 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{24ABFDE3-979B-4DAA-A7DB-508038837C0A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <AssemblyName>GlueContextMenuExtension</AssemblyName>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
+    <RootNamespace>GlueContextMenuExtension</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SkySoftware.EZShellExtensions20, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d645dd87b2631575" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionItem.cs" />
+    <Compile Include="ActionItemList.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GlueContextMenuExtension.cs" />
+    <Compile Include="Settings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Add.bat" />
+    <Content Include="Glue.gif" />
+    <EmbeddedResource Include="Glue.ico" />
+    <Content Include="Settings.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Annotate.bat" />
+    <None Include="Checkin.bat" />
+    <None Include="Checkout.bat" />
+    <None Include="Delete.bat" />
+    <None Include="Get.bat" />
+    <None Include="History.bat" />
+    <None Include="key.snk" />
+    <None Include="PostBuild.bat" />
+    <None Include="Rollback.bat" />
+    <None Include="Undo.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="EZShellExtensions.resources" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <PropertyGroup>
+    <PostBuildEvent>$(ProjectDir)PostBuild.bat "$(TargetPath)"</PostBuildEvent>
+    <PreBuildEvent>"C:\Program Files\Sky Software\EZShellExtensions.Net 2.0\RegisterExtensionDotNet20.exe" -u "$(TargetPath)"
+"C:\Program Files\Sky Software\EZShellExtensions.Net 2.0\RestartExplorer.exe"</PreBuildEvent>
+  </PropertyGroup>
+</Project>
