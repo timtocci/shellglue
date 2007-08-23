@@ -91,6 +91,7 @@ namespace GlueContextMenuExtension
 
 		public GlueContextMenuExtension()
         {
+            //System.Diagnostics.Debugger.Break();
 			using (StreamReader SettingsStream = File.OpenText(Path.Combine(Path.GetDirectoryName(this.GetType().Assembly.Location), "Settings.xml")))
 			{
 				this.Configuration = (Settings)new XmlSerializer(typeof(Settings)).Deserialize(SettingsStream);
@@ -112,7 +113,7 @@ namespace GlueContextMenuExtension
 			parent.HasSubMenu = true;
 			parent.OwnerDraw = true;
 
-            this.Configuration.Actions.AddMenuItems(ref parent);
+            this.Configuration.Actions.AddMenuItems(ref parent, this.TargetFolder, this.TargetFiles);
 		}
 
 
@@ -120,26 +121,8 @@ namespace GlueContextMenuExtension
 		// menu items provided by your contextmenu extension is selected by the user.
 		protected override bool OnExecuteMenuItem(SkySoftware.EZShellExtensions.ExecuteItemEventArgs e)
 		{
-			ProcessStartInfo ProcInfo = new ProcessStartInfo();
-			ProcInfo.FileName = this.Configuration.Actions.GetActionItem(e.MenuItem.Verb).ProgramPath;
-			ProcInfo.CreateNoWindow = false;
-			ProcInfo.UseShellExecute = false;
-
-			StringBuilder ArgBuilder = new StringBuilder();
-
-			if (!String.IsNullOrEmpty(this.TargetFolder))
-				ArgBuilder.Append(string.Format("\"{0}\" ", this.TargetFolder));
-
-			if (this.TargetFiles != null && this.TargetFiles.Length > 0)
-				foreach (string FilePath in this.TargetFiles)
-					ArgBuilder.Append(string.Format("\"{0}\" ", FilePath));
-
-			ProcInfo.Arguments = ArgBuilder.ToString();
-
-			System.Diagnostics.Process process = new Process();
-			process.StartInfo = ProcInfo;
-			process.Start();
-
+			this.Configuration.Actions.GetActionItem(e.MenuItem).Execute(this.TargetFolder, this.TargetFiles);
+			
 			// Return value is ignored.
 			return true;
 		}
@@ -148,10 +131,11 @@ namespace GlueContextMenuExtension
 		// Override this method to provide the dimensions for any owner drawn 
 		// contextmenu items provided by your contextmenu extension.
 		// TODO : UNCOMMENT THIS OVERRIDE IF YOU HAVE OWNER DRAWN MENU IETMS
-		//protected override void OnMeasureMenuItem(SkySoftware.EZShellExtensions.EZSMeasureItemEventArgs e)
-		//{
-		//    e.ItemHeight = e.ItemWidth = 150;
-		//}
+        protected override void OnMeasureMenuItem(SkySoftware.EZShellExtensions.EZSMeasureItemEventArgs e)
+        {
+            e.ItemHeight = 17;
+            e.ItemWidth = 150;
+        }
 
 
 		// Override this method to draw any owner-draw menu items
@@ -165,7 +149,7 @@ namespace GlueContextMenuExtension
             if (e.MenuItem.Verb == GlueShellMenuItemName)
                 IconStream = this.GetType().Assembly.GetManifestResourceStream("GlueContextMenuExtension.Glue.ico");
             else
-                IconStream = File.OpenRead(this.Configuration.Actions.GetActionItem(e.MenuItem.Verb).IconFilePath);
+                IconStream = File.OpenRead(this.Configuration.Actions.GetActionItem(e.MenuItem).IconFilePath);
             try
             {
 	            using (Icon GlueImage = new Icon(IconStream))
@@ -178,7 +162,7 @@ namespace GlueContextMenuExtension
 	            if (IconStream != null)
 	                IconStream.Dispose();
             }
-            e.Graphics.DrawString(e.MenuItem.Caption, SystemInformation.MenuFont, Brushes.Black, 17.0F, (float)e.Bounds.Top + 2);
+            e.Graphics.DrawString(e.MenuItem.Caption, SystemInformation.MenuFont, Brushes.Black, 18.0F, (float)e.Bounds.Top + 1);
             e.DrawFocusRectangle();
 		}
 
