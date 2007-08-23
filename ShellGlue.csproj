@@ -48,7 +48,9 @@
     <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include=".Net\Build.bat" />
     <None Include="TFS\Add.bat" />
+    <Content Include=".Net\msbuild.ico" />
     <Content Include=".Net\vs.ico" />
     <Content Include="Glue.gif" />
     <EmbeddedResource Include="Glue.ico" />
