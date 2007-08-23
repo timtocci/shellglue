@@ -2,58 +2,21 @@
 <Settings>
 	<Actions>
 		<ActionItem>
-			<Name>Add</Name>
-			<Verb>Add</Verb>
-			<Help>Add</Help>
-			<ProgramPath>C:\Projects\ShellGlue\Add.bat</ProgramPath>
-		</ActionItem>
-		<ActionItem>
-			<Name>Annotate</Name>
-			<Verb>Annotate</Verb>
-			<Help>Annotate</Help>
-			<ProgramPath>C:\Projects\ShellGlue\Annotate.bat</ProgramPath>
-		</ActionItem>
-		<ActionItem>
-			<Name>Checkin</Name>
-			<Verb>Checkin</Verb>
-			<Help>Checkin</Help>
-			<ProgramPath>C:\Projects\ShellGlue\Checkin.bat</ProgramPath>
-		</ActionItem>
-		<ActionItem>
-			<Name>Checkout</Name>
-			<Verb>Checkout</Verb>
-			<Help>Checkout</Help>
-			<ProgramPath>C:\Projects\ShellGlue\Checkout.bat</ProgramPath>
-		</ActionItem>
-		<ActionItem>
-			<Name>Delete</Name>
-			<Verb>Delete</Verb>
-			<Help>Delete</Help>
-			<ProgramPath>C:\Projects\ShellGlue\Delete.bat</ProgramPath>
-		</ActionItem>
-		<ActionItem>
-			<Name>Get</Name>
-			<Verb>Get</Verb>
-			<Help>Get</Help>
-			<ProgramPath>C:\Projects\ShellGlue\Get.bat</ProgramPath>
-		</ActionItem>
-		<ActionItem>
-			<Name>History</Name>
-			<Verb>History</Verb>
-			<Help>History</Help>
-			<ProgramPath>C:\Projects\ShellGlue\History.bat</ProgramPath>
-		</ActionItem>
-		<ActionItem>
-			<Name>Rollback</Name>
-			<Verb>Rollback</Verb>
-			<Help>Rollback</Help>
-			<ProgramPath>C:\Projects\ShellGlue\Rollback.bat</ProgramPath>
-		</ActionItem>
-		<ActionItem>
-			<Name>Undo</Name>
-			<Verb>Undo</Verb>
-			<Help>Undo</Help>
-			<ProgramPath>C:\Projects\ShellGlue\Undo.bat</ProgramPath>
+			<Name>.Net</Name>
+			<IconFilePath>C:\Projects\ShellGlue\.Net\vs.ico</IconFilePath>
+			<Actions>
+				<ActionItem>
+					<Name>Build</Name>
+					<Verb>Build</Verb>
+					<Help>Build</Help>
+					<IconFilePath>C:\Projects\ShellGlue\.Net\msbuild.ico</IconFilePath>
+					<ExtentionFilter>
+						<string>^.*\.sln$</string>
+						<string>^.*\..*proj$</string>
+					</ExtentionFilter>
+					<ProgramPath>C:\Projects\ShellGlue\.Net\Build.bat</ProgramPath>
+				</ActionItem>
+			</Actions>
 		</ActionItem>
 	</Actions>
 </Settings>

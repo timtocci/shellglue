@@ -48,22 +48,26 @@
     <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Add.bat" />
+    <None Include="TFS\Add.bat" />
+    <Content Include=".Net\vs.ico" />
     <Content Include="Glue.gif" />
     <EmbeddedResource Include="Glue.ico" />
     <Content Include="Settings.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Annotate.bat" />
-    <None Include="Checkin.bat" />
-    <None Include="Checkout.bat" />
-    <None Include="Delete.bat" />
-    <None Include="Get.bat" />
-    <None Include="History.bat" />
+    <Content Include="TFS\Settings.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="TFS\Annotate.bat" />
+    <None Include="TFS\Checkin.bat" />
+    <None Include="TFS\Checkout.bat" />
+    <None Include="TFS\Delete.bat" />
+    <None Include="TFS\Get.bat" />
+    <None Include="TFS\History.bat" />
     <None Include="key.snk" />
     <None Include="PostBuild.bat" />
-    <None Include="Rollback.bat" />
-    <None Include="Undo.bat" />
+    <None Include="TFS\Rollback.bat" />
+    <None Include="TFS\Undo.bat" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="EZShellExtensions.resources" />

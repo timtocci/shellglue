@@ -76,6 +76,16 @@ namespace GlueContextMenuExtension
             }
         }
 
+        private string[] _ExtentionFilter;
+        public string[] ExtentionFilter
+        {
+            get { return _ExtentionFilter; }
+            set
+            {
+                _ExtentionFilter = value;
+            }
+        }
+
         private ActionItemList _Actions;
 
         public ActionItemList Actions
@@ -100,8 +110,28 @@ namespace GlueContextMenuExtension
             }
         }
 
-        public void AddMenuItems(ref ShellMenuItem parentMenuItem)
+        public void AddMenuItems(ref ShellMenuItem parentMenuItem, string targetFolder, string[] targetFiles)
         {
+            if (this.ExtentionFilter != null && this.ExtentionFilter.Length > 0)
+            {
+                foreach (string TargetFile in targetFiles)
+                {
+                    Boolean FoundMatch = false;
+                    foreach (string Filter in this.ExtentionFilter)                    
+                    {
+                        if (!Regex.IsMatch(TargetFile, Filter))
+                            FoundMatch = false;
+                        else
+                        {
+                            FoundMatch = true;
+                            break;
+                        }
+                    }
+                    if (!FoundMatch)
+                        return;
+                }
+            }
+
             ShellMenuItem MenuItem;
 
             if (!String.IsNullOrEmpty(this.Verb) && !String.IsNullOrEmpty(this.Help))
@@ -117,8 +147,50 @@ namespace GlueContextMenuExtension
             if (this.Actions != null && this.Actions.Count > 0)
             {
                 MenuItem.HasSubMenu = true;
-                this.Actions.AddMenuItems(ref MenuItem);
+                this.Actions.AddMenuItems(ref MenuItem, targetFolder, targetFiles);
             }
+        }
+
+        public void Execute(string targetFolder, string[] targetFiles)
+        {
+            ProcessStartInfo ProcInfo = new ProcessStartInfo();
+            ProcInfo.FileName = this.ProgramPath;
+            ProcInfo.CreateNoWindow = false;
+            ProcInfo.UseShellExecute = false;
+
+            StringBuilder ArgBuilder = new StringBuilder();
+
+            if (!String.IsNullOrEmpty(targetFolder))
+                ArgBuilder.Append(string.Format("\"{0}\" ", targetFolder));
+
+            if (targetFiles != null && targetFiles.Length > 0)
+            {
+                string TempFilePath = Path.GetTempFileName();
+                using (TextWriter Writer = File.CreateText(TempFilePath))
+                {
+                    foreach (string FilePath in targetFiles)
+                        Writer.WriteLine(FilePath);
+                }
+                ArgBuilder.Append(string.Format("\"{0}\" ", TempFilePath));
+            }
+
+            ProcInfo.Arguments = ArgBuilder.ToString();
+
+            System.Diagnostics.Process process = new Process();
+            process.StartInfo = ProcInfo;
+            process.Start();
+        }
+
+        public string GetKey()
+        {
+            string verb = !string.IsNullOrEmpty(this.Verb) ? this.Verb : this.Name;
+            string help = !string.IsNullOrEmpty(this.Help) ? this.Help : this.Name;
+            return string.Format("{0}:{1}:{2}", this.Name, verb, help);
+        }
+
+        public static string GetKey(ShellMenuItem menu)
+        {
+            return string.Format("{0}:{1}:{2}", menu.Caption, menu.Verb, menu.HelpString);
         }
     }
 }

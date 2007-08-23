@@ -27,6 +27,8 @@ namespace GlueContextMenuExtension
         {
             get
             {
+                if (_FlatList == null)
+                    _FlatList = new Dictionary<string, ActionItem>();
                 return _FlatList;
             }
             set
@@ -37,21 +39,26 @@ namespace GlueContextMenuExtension
 
         protected override string GetKeyForItem(ActionItem item)
         {
-            if (!FlatList.ContainsKey(item.Verb))
-                FlatList.Add(item.Verb, item);
-            return item.Verb;
+            if (!FlatList.ContainsKey(item.GetKey()))
+                FlatList.Add(item.GetKey(), item);
+            return item.GetKey();
         }
 
-        public void AddMenuItems(ref ShellMenuItem parentMenuItem)
+        public void AddMenuItems(ref ShellMenuItem parentMenuItem, string targetFolder, string[] targetFiles)
         {
             foreach (ActionItem Action in this)
-                Action.AddMenuItems(ref parentMenuItem);
+                Action.AddMenuItems(ref parentMenuItem, targetFolder, targetFiles);
         }
 
-        public ActionItem GetActionItem(string verb)
+        public ActionItem GetActionItem(ShellMenuItem menu)
         {
-            return FlatList[verb];
+            return FlatList[ActionItem.GetKey(menu)];
         }
+
+        //public ActionItem GetActionItem(string key)
+        //{
+        //    return FlatList[key];
+        //}
 
     }
 }
