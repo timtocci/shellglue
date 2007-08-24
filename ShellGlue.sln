@@ -1,7 +1,13 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShellGlue", "ShellGlue.csproj", "{24ABFDE3-979B-4DAA-A7DB-508038837C0A}"
+	ProjectSection(WebsiteProperties) = preProject
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.Debug = "False"
+	EndProjectSection
+EndProject
+Project("{A49CE20D-CE64-4A08-9F24-92A6443D6699}") = "Install", "Install\Install.wixproj", "{0F7916DC-32A0-4C1F-B053-71BAC90FA84F}"
 	ProjectSection(WebsiteProperties) = preProject
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.Debug = "False"
@@ -17,6 +23,10 @@ Global
 		{24ABFDE3-979B-4DAA-A7DB-508038837C0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24ABFDE3-979B-4DAA-A7DB-508038837C0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24ABFDE3-979B-4DAA-A7DB-508038837C0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F7916DC-32A0-4C1F-B053-71BAC90FA84F}.Debug|Any CPU.ActiveCfg = Debug
+		{0F7916DC-32A0-4C1F-B053-71BAC90FA84F}.Debug|Any CPU.Build.0 = Debug
+		{0F7916DC-32A0-4C1F-B053-71BAC90FA84F}.Release|Any CPU.ActiveCfg = Release
+		{0F7916DC-32A0-4C1F-B053-71BAC90FA84F}.Release|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
