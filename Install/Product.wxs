@@ -73,11 +73,17 @@
     </Feature>
 
 		<CustomAction Id="RegisterWithShell" FileKey="RegisterExtensionDotNet20.exe" ExeCommand='-i "C:\Program Files\Shell Glue\GlueContextMenuExtension.dll"' Return="check" />
-		<CustomAction Id="RestartExplorer" FileKey="RestartExplorer.exe" ExeCommand="" Return="check" />
-
+		<CustomAction Id="UnregisterWithShell" FileKey="RegisterExtensionDotNet20.exe" ExeCommand='-u "C:\Program Files\Shell Glue\GlueContextMenuExtension.dll"' Return="check" />
+		<CustomAction Id="UnregisterWithShellRemove" FileKey="RegisterExtensionDotNet20.exe" ExeCommand='-u "C:\Program Files\Shell Glue\GlueContextMenuExtension.dll"' Return="check" />
+		<CustomAction Id="RestartExplorerBefore" FileKey="RestartExplorer.exe" ExeCommand="" Return="check" />
+		<CustomAction Id="RestartExplorerBeforeRemove" FileKey="RestartExplorer.exe" ExeCommand="" Return="check" />
+		<CustomAction Id="RestartExplorerAfter" FileKey="RestartExplorer.exe" ExeCommand="" Return="check" />
+		
 		<InstallExecuteSequence>
+			<Custom Action="UnregisterWithShellRemove" Before="RemoveFiles">Installed</Custom>
+			<Custom Action="RestartExplorerBeforeRemove" Before="RemoveFiles">Installed</Custom>
 			<Custom Action="RegisterWithShell" After="InstallFinalize"></Custom>
-			<Custom Action="RestartExplorer" After="InstallFinalize"></Custom>
+			<Custom Action="RestartExplorerAfter" After="InstallFinalize"></Custom>
 			</InstallExecuteSequence>
   </Product>
 </Wix>
