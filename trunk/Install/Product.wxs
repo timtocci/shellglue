@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2003/01/wi">
+  <Product Id="DC246841-468C-4cc2-BDEB-344C54D28E60" 
+					 Name="Shell Glue" 
+					 Language="1033" 
+					 Version="1.0.0.0" 
+					 Manufacturer="Jay Flowers">
+    <Package Id="DD93A00B-9A70-4119-8DC5-8599202FE536" 
+						 Description="Shell Context Menu Extendor" Comments="Glue not Rubber." 
+						 InstallerVersion="200" Compressed="yes" />
+
+		<Media Id="1" Cabinet="ShellGlue.cab" EmbedCab="yes"></Media>
+		
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLLOCATION" Name="SHELLG~1" LongName="Shell Glue">
+					
+          <Component Id="ProductComponent" Guid="{3A075EF2-F708-4081-8EE0-D45325EE1315}">
+						<File DiskId="1"
+							Id="GlueContextMenuExtension.dll"
+							Name="GLUECO~1.DLL" LongName="GlueContextMenuExtension.dll"
+							Source="C:\Projects\ShellGlue\bin\Debug\GlueContextMenuExtension.dll">
+						</File>
+						<File DiskId="1"
+							Id="SkySoftware.EZShellExtensions20.dll"
+							Name="SKYSOF~1.DLL" LongName="SkySoftware.EZShellExtensions20.dll"
+							Source="C:\Projects\ShellGlue\bin\Debug\SkySoftware.EZShellExtensions20.dll">
+						</File>
+						<File DiskId="1"
+							Id="RegisterExtensionDotNet20.exe"
+							Name="REGIST~1.DLL" LongName="RegisterExtensionDotNet20.exe"
+							Source="C:\Program Files\Sky Software\EZShellExtensions.Net 2.0\RegisterExtensionDotNet20.exe">
+						</File>
+						<File DiskId="1"
+							Id="RestartExplorer.exe"
+							Name="RESTAR~1.DLL" LongName="RestartExplorer.exe"
+							Source="C:\Program Files\Sky Software\EZShellExtensions.Net 2.0\RestartExplorer.exe">
+						</File>
+
+						<File DiskId="1"
+							Id="Settings.xml"
+							Name="Settings.xml" LongName="Settings.xml"
+							Source="C:\Projects\ShellGlue\Deployment\Settings.xml">
+						</File>
+					</Component>
+
+					<Directory Id="DotNetMenu" LongName=".Net" Name="NET~1" >
+						<Component Id="DotNetMenu" Guid="9F3770FC-2671-4c9f-B52E-8FE2023AB2FD">
+							<File DiskId="1"
+							Id="Build.bat"
+							Name="Build.bat" LongName="Build.bat"
+							Source="C:\Projects\ShellGlue\.Net\Build.bat">
+							</File>
+							<File DiskId="1"
+								Id="msbuild.ico"
+								Name="msbuild.ico" LongName="msbuild.ico"
+								Source="C:\Projects\ShellGlue\.Net\msbuild.ico">
+							</File>
+							<File DiskId="1"
+								Id="vs.ico"
+								Name="vs.ico" LongName="vs.ico"
+								Source="C:\Projects\ShellGlue\.Net\vs.ico">
+							</File>
+						</Component>
+					</Directory>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <Feature Id="ProductFeature" Title="The Goods" Level="1">
+      <ComponentRef Id="ProductComponent" />
+			<ComponentRef Id="DotNetMenu" />
+    </Feature>
+
+		<CustomAction Id="RegisterWithShell" FileKey="RegisterExtensionDotNet20.exe" ExeCommand='-i "C:\Program Files\Shell Glue\GlueContextMenuExtension.dll"' Return="check" />
+		<CustomAction Id="RestartExplorer" FileKey="RestartExplorer.exe" ExeCommand="" Return="check" />
+
+		<InstallExecuteSequence>
+			<Custom Action="RegisterWithShell" After="InstallFinalize"></Custom>
+			<Custom Action="RestartExplorer" After="InstallFinalize"></Custom>
+			</InstallExecuteSequence>
+  </Product>
+</Wix>
