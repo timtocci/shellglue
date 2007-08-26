@@ -4,13 +4,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{24ABFDE3-979B-4DAA-A7DB-508038837C0A}</ProjectGuid>
+    <ProjectGuid>{CEA1860F-9465-47CE-AFB3-BAC13F153F4F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <AssemblyName>GlueContextMenuExtension</AssemblyName>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
-    <RootNamespace>ShellGlue</RootNamespace>
+    <RootNamespace>ShellGlue.Tests</RootNamespace>
+    <AssemblyName>ShellGlue.Tests</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,52 +28,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MbUnit.Framework, Version=1.0.2700.29885, Culture=neutral, PublicKeyToken=5e72ecd30bc408d5" />
+    <Reference Include="MbUnit.Framework.2.0, Version=0.0.0.0, Culture=neutral, PublicKeyToken=5e72ecd30bc408d5, processorArchitecture=MSIL" />
     <Reference Include="SkySoftware.EZShellExtensions20, Version=2.0.0.0, Culture=neutral, PublicKeyToken=d645dd87b2631575" />
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="ActionItem.cs" />
-    <Compile Include="ActionItemList.cs" />
+    <Compile Include="ActionItemTests.cs" />
+    <Compile Include="FakeIWrapperShellMenuItem.Cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GlueContextMenuExtension.cs" />
-    <Compile Include="Settings.cs" />
-    <Compile Include="WrappedWriter.cs" />
-    <Compile Include="WrapperShellMenuItem.Cs" />
-    <Compile Include="WriterBase.cs" />
+    <Compile Include="RecorderWriterBase.Cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include=".Net\Build.bat" />
-    <None Include="TFS\Add.bat" />
-    <Content Include=".Net\msbuild.ico" />
-    <Content Include=".Net\vs.ico" />
-    <Content Include="Deployment\Settings.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Glue.gif" />
-    <EmbeddedResource Include="Glue.ico" />
-    <Content Include="TFS\Settings.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <None Include="TFS\Annotate.bat" />
-    <None Include="TFS\Checkin.bat" />
-    <None Include="TFS\Checkout.bat" />
-    <None Include="TFS\Delete.bat" />
-    <None Include="TFS\Get.bat" />
-    <None Include="TFS\History.bat" />
-    <None Include="key.snk" />
-    <None Include="PostBuild.bat" />
-    <None Include="TFS\Rollback.bat" />
-    <None Include="TFS\Undo.bat" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="EZShellExtensions.resources" />
+    <ProjectReference Include="..\ShellGlue.csproj">
+      <Project>{24ABFDE3-979B-4DAA-A7DB-508038837C0A}</Project>
+      <Name>ShellGlue</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -85,10 +55,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-    <PreBuildEvent>
-    </PreBuildEvent>
-  </PropertyGroup>
 </Project>

@@ -15,8 +15,9 @@ using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using SkySoftware.EZShellExtensions.Wrapped;
 
-namespace GlueContextMenuExtension
+namespace ShellGlue
 {
     [Serializable]
     public class ActionItemList : KeyedCollection<string, ActionItem>
@@ -37,6 +38,11 @@ namespace GlueContextMenuExtension
             }
         }
 
+        public static void Reset()
+        {
+            FlatList.Clear();
+        }
+
         protected override string GetKeyForItem(ActionItem item)
         {
             if (!FlatList.ContainsKey(item.GetKey()))
@@ -52,7 +58,8 @@ namespace GlueContextMenuExtension
 
         public ActionItem GetActionItem(ShellMenuItem menu)
         {
-            return FlatList[ActionItem.GetKey(menu)];
+            WrapperShellMenuItem WrappedItem = new WrapperShellMenuItem(menu);
+            return FlatList[ActionItem.GetKey(WrappedItem)];
         }
 
         //public ActionItem GetActionItem(string key)

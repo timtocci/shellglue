@@ -14,29 +14,17 @@ using System.Text;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using System.Collections.ObjectModel;
+using SkySoftware.EZShellExtensions.Wrapped;
 
 namespace ShellGlue
 {
-    [Serializable]
-    public class Settings
+    public abstract class WriterBase : IDisposable
     {
-        private ActionItemList _Actions;
+        public WriterBase(string filePath) { }
 
-        public ActionItemList Actions
-        {
-            get
-            {
-                return _Actions;
-            }
-            set
-            {
-                _Actions = value;
-            }
-        }
+        public abstract void WriteLine(string line);
+        public abstract void Dispose();
 
-        public Settings()
-        {
-    	    ActionItemList.Reset();
-        }
+        public abstract bool IsDisposed { get; set;}
     }
 }
