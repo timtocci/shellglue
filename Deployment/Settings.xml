@@ -9,6 +9,7 @@
 					<Name>Build</Name>
 					<Verb>Build</Verb>
 					<Help>Build</Help>
+					<TargetListMode>File</TargetListMode>
 					<IconFilePath>C:\Program Files\Shell Glue\.Net\msbuild.ico</IconFilePath>
 					<ExtentionFilter>
 						<string>^.*\.sln$</string>

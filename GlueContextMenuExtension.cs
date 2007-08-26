@@ -60,7 +60,7 @@ See the topic "Using Post-Build Steps to ease testing of shell extensions" in th
 help file for more information.
 */
 
-namespace GlueContextMenuExtension
+namespace ShellGlue
 {
 
 	// The GuidAttribute has been applied to the extension class
@@ -147,7 +147,7 @@ namespace GlueContextMenuExtension
             Stream IconStream = null;
 
             if (e.MenuItem.Verb == GlueShellMenuItemName)
-                IconStream = this.GetType().Assembly.GetManifestResourceStream("GlueContextMenuExtension.Glue.ico");
+                IconStream = this.GetType().Assembly.GetManifestResourceStream("ShellGlue.Glue.ico");
             else
                 IconStream = File.OpenRead(this.Configuration.Actions.GetActionItem(e.MenuItem).IconFilePath);
             try
