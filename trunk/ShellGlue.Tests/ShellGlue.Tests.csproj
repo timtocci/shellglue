@@ -42,7 +42,7 @@
     <Compile Include="RecorderWriterBase.Cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ShellGlue.csproj">
+    <ProjectReference Include="..\ShellGlue\ShellGlue.csproj">
       <Project>{24ABFDE3-979B-4DAA-A7DB-508038837C0A}</Project>
       <Name>ShellGlue</Name>
     </ProjectReference>

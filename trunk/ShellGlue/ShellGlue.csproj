@@ -58,7 +58,6 @@
     <Content Include="Deployment\Settings.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Glue.gif" />
     <EmbeddedResource Include="Glue.ico" />
     <Content Include="TFS\Settings.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
