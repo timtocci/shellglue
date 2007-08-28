@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Settings>
+	<Actions>
+		<ActionItem>
+			<Name>.Net</Name>
+			<IconFilePath>C:\Program Files\Shell Glue\.Net\vs.ico</IconFilePath>
+			<Actions>
+				<ActionItem>
+					<Name>Build</Name>
+					<Verb>Build</Verb>
+					<Help>Build</Help>
+					<TargetListMode>File</TargetListMode>
+					<IconFilePath>C:\Program Files\Shell Glue\.Net\msbuild.ico</IconFilePath>
+					<ExtentionFilter>
+						<string>^.*\.sln$</string>
+						<string>^.*\..*proj$</string>
+					</ExtentionFilter>
+					<ProgramPath>C:\Program Files\Shell Glue\.Net\Build.bat</ProgramPath>
+				</ActionItem>
+			</Actions>
+		</ActionItem>
+		<ActionItem>
+			<Name>TFS Crab</Name>
+			<IconFilePath>C:\Program Files\Shell Glue\TFS\crab.ico</IconFilePath>
+			<Actions>
+				<ActionItem>
+					<Name>Add</Name>
+					<TargetListMode>CommandLine</TargetListMode>
+					<ArgumentsFormat>add {0} /recursive</ArgumentsFormat>
+					<ProgramPath>C:\Program Files\Microsoft Visual Studio 8\Common7\IDE\TF.exe</ProgramPath>
+				</ActionItem>
+				<ActionItem>
+					<Name>Checkout</Name>
+					<TargetListMode>CommandLine</TargetListMode>
+					<ArgumentsFormat>checkout {0} /recursive</ArgumentsFormat>
+					<ProgramPath>C:\Program Files\Microsoft Visual Studio 8\Common7\IDE\TF.exe</ProgramPath>
+				</ActionItem>
+				<ActionItem>
+					<Name>Checkin</Name>
+					<TargetListMode>CommandLine</TargetListMode>
+					<ArgumentsFormat>checkin {0} /recursive</ArgumentsFormat>
+					<ProgramPath>C:\Program Files\Microsoft Visual Studio 8\Common7\IDE\TF.exe</ProgramPath>
+				</ActionItem>
+				<ActionItem>
+					<Name>Undo</Name>
+					<TargetListMode>CommandLine</TargetListMode>
+					<ArgumentsFormat>undo {0} /recursive</ArgumentsFormat>
+					<ProgramPath>C:\Program Files\Microsoft Visual Studio 8\Common7\IDE\TF.exe</ProgramPath>
+				</ActionItem>
+				<ActionItem>
+					<Name>Delete</Name>
+					<TargetListMode>CommandLine</TargetListMode>
+					<ArgumentsFormat>delete {0} /recursive</ArgumentsFormat>
+					<ProgramPath>C:\Program Files\Microsoft Visual Studio 8\Common7\IDE\TF.exe</ProgramPath>
+				</ActionItem>
+				<ActionItem>
+					<Name>Get</Name>
+					<TargetListMode>CommandLine</TargetListMode>
+					<ArgumentsFormat>get {0} /recursive</ArgumentsFormat>
+					<ProgramPath>C:\Program Files\Microsoft Visual Studio 8\Common7\IDE\TF.exe</ProgramPath>
+				</ActionItem>
+				<ActionItem>
+					<Name>History</Name>
+					<TargetListMode>CommandLine</TargetListMode>
+					<ArgumentsFormat>history {0} /recursive</ArgumentsFormat>
+					<ProgramPath>C:\Program Files\Microsoft Visual Studio 8\Common7\IDE\TF.exe</ProgramPath>
+				</ActionItem>
+				<ActionItem>
+					<Name>Annotate</Name>
+					<TargetListMode>CommandLine</TargetListMode>
+					<ArgumentsFormat>annotate {0}</ArgumentsFormat>
+					<ProgramPath>C:\Program Files\Microsoft Team Foundation Server Power Tools\TFPT.exe</ProgramPath>
+				</ActionItem>
+			</Actions>
+		</ActionItem>
+	</Actions>
+</Settings>
