@@ -19,12 +19,12 @@
 						<File DiskId="1"
 							Id="GlueContextMenuExtension.dll"
 							Name="GLUECO~1.DLL" LongName="GlueContextMenuExtension.dll"
-							Source="C:\Projects\ShellGlue\bin\Debug\GlueContextMenuExtension.dll">
+							Source="C:\Projects\ShellGlue\ShellGlue\bin\Debug\GlueContextMenuExtension.dll">
 						</File>
 						<File DiskId="1"
 							Id="SkySoftware.EZShellExtensions20.dll"
 							Name="SKYSOF~1.DLL" LongName="SkySoftware.EZShellExtensions20.dll"
-							Source="C:\Projects\ShellGlue\bin\Debug\SkySoftware.EZShellExtensions20.dll">
+							Source="C:\Projects\ShellGlue\ShellGlue\bin\Debug\SkySoftware.EZShellExtensions20.dll">
 						</File>
 						<File DiskId="1"
 							Id="RegisterExtensionDotNet20.exe"
@@ -40,7 +40,7 @@
 						<File DiskId="1"
 							Id="Settings.xml"
 							Name="Settings.xml" LongName="Settings.xml"
-							Source="C:\Projects\ShellGlue\Deployment\Settings.xml">
+							Source="C:\Projects\ShellGlue\ShellGlue\Deployment\Settings.xml">
 						</File>
 					</Component>
 
@@ -49,17 +49,26 @@
 							<File DiskId="1"
 							Id="Build.bat"
 							Name="Build.bat" LongName="Build.bat"
-							Source="C:\Projects\ShellGlue\.Net\Build.bat">
+							Source="C:\Projects\ShellGlue\ShellGlue\.Net\Build.bat">
 							</File>
 							<File DiskId="1"
 								Id="msbuild.ico"
 								Name="msbuild.ico" LongName="msbuild.ico"
-								Source="C:\Projects\ShellGlue\.Net\msbuild.ico">
+								Source="C:\Projects\ShellGlue\ShellGlue\.Net\msbuild.ico">
 							</File>
 							<File DiskId="1"
 								Id="vs.ico"
 								Name="vs.ico" LongName="vs.ico"
-								Source="C:\Projects\ShellGlue\.Net\vs.ico">
+								Source="C:\Projects\ShellGlue\ShellGlue\.Net\vs.ico">
+							</File>
+						</Component>
+					</Directory>
+					<Directory Id="TFSMenu" LongName="TFS" Name="TFS~1" >
+						<Component Id="TFSMenu" Guid="424457B5-72A7-4702-AA52-B2A43456E66F">
+							<File DiskId="1"
+								Id="crab.ico"
+								Name="crab.ico" LongName="crab.ico"
+								Source="C:\Projects\ShellGlue\ShellGlue\TFS\crab.ico">
 							</File>
 						</Component>
 					</Directory>
@@ -70,6 +79,7 @@
     <Feature Id="ProductFeature" Title="The Goods" Level="1">
       <ComponentRef Id="ProductComponent" />
 			<ComponentRef Id="DotNetMenu" />
+			<ComponentRef Id="TFSMenu" />
     </Feature>
 
 		<CustomAction Id="RegisterWithShell" FileKey="RegisterExtensionDotNet20.exe" ExeCommand='-i "C:\Program Files\Shell Glue\GlueContextMenuExtension.dll"' Return="check" />
