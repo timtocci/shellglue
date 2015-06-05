@@ -1,0 +1,1 @@
+Through a config file add context menu items to files and folders, associating a batch file to be executed when the context menu item is selected.
